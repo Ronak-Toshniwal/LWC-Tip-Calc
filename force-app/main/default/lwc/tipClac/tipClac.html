@@ -1,0 +1,32 @@
+<template>
+    <main >
+
+        <lightning-card  >
+            <h2 slot="title">Tip Calculator</h2>
+            <lightning-button label="New" slot="actions" onclick={resetBtn}></lightning-button>
+
+            <article class="form" slot="footer">
+                <p class="heading"> </p>
+                <form>
+                <lightning-input type="number" label="Total Bill Amount in Dollars" placeholder="type here..." class="input-box" required onchange={billAmt} id="billAmt"></lightning-input>
+                <section class="tipStyle">
+                    <button type="button" onclick={tipdesc} class="negative">-</button>
+                    <lightning-input type="number" label="Tip Percentage in %" placeholder="type here..." class="input-box" required onchange={tip} id="tip" value={tipValueUpdate}></lightning-input>
+                    <button type="button" onclick={tipinc} class="positive">+</button>
+               </section>
+                <lightning-input type="number" label="Number of people" placeholder="type here..." class="input-box" required onchange={people} id="people"></lightning-input>
+                <nav class="btn">
+                    <lightning-button  variant="brand" label="Calculate" title="Primary action" onclick={calculateBtn} class="slds-m-left_x-small btnStyle"></lightning-button>
+                    <lightning-button  variant="destructive" label="Reset" title="Primary action" onclick={resetBtn} class="slds-m-left_x-small btnStyle"></lightning-button>
+                </nav>
+            </form>
+            <template if:true={visibility}>
+                <p class={result}>Total Tip : ${pay} </p>
+                <p class={result}>Each person has to pay total  : ${totalpay} </p>
+            </template>
+            </article>
+        </lightning-card>
+       
+        
+    </main>
+</template>
